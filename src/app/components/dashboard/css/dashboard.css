@@ -1,0 +1,254 @@
+.container {
+    padding: 0px !important;
+    margin: 0px !important;
+}
+
+.banner {
+    height: 62px;
+    background: #FFFFFF73 0% 0% no-repeat padding-box;
+    opacity: 1;
+}
+
+.banner > span {
+    text-align: right;
+}
+
+.banner > span {
+    display: inline;
+    vertical-align: middle;
+    /* font: Regular 25px/30px Rockwell; */
+    letter-spacing: 0;
+    color: #515151;
+    opacity: 1;
+    font-family: rockwell, sans-serif;
+    font-size: 20px;
+}
+
+.logo {
+    display: inline-block;
+    padding-left: 10px;
+    padding-top: 6px;
+}
+
+.logo-name {
+    display: inline-block;
+    margin-left: 5px;
+
+}
+
+.logo-name > span {
+    vertical-align: middle;
+    font-family: rockwell, sans-serif;
+    font-size: 25px;
+    color: #515151;
+}
+
+.settings {
+    float: right;
+}
+
+.settings img {
+    margin-top: 16px;
+    margin-right: 8px;
+}
+
+.settings-dropdown {
+    background: url('images/settings.png');
+    list-style: none;
+}
+
+@media (min-width: 576px){
+    .container {
+        max-width: none;
+    }
+}
+
+.search-row {
+    padding-top: 14px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.active-purple .form-control {
+    background: transparent;
+    border: 1px solid #000000;
+    border-radius: 4px;
+}
+
+.form-control::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: black;
+    opacity: 1; /* Firefox */
+  }
+
+.active-purple {
+    width: 247px;
+    height: 41px;
+}
+
+.col {
+    padding: 0 !important;
+}
+
+.dropdown > input.btn {
+    background: transparent !important;
+    border: 1px solid #000000;
+    border-radius: 4px;
+    color: black !important;
+    width: 182px;
+}
+
+.btn-secondary:active, .btn-secondary:hover {
+    background-color: transparent !important;
+    border-color: black !important;
+    color: black !important;
+    box-shadow: none;
+}
+
+.btn-secondary:focus, .btn-secondary.dropdown-toggle, .btn-secondary.dropdown-toggle:focus {
+    box-shadow: none !important;
+}
+
+.row.coppy-card {
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-bottom: 21px;
+}
+
+.card-container {
+    margin-top: 30px;
+}
+
+.icon > img{
+    width: 24px;
+}
+
+.MuiCardContent-root:last-child {
+    padding-bottom: 0px !important;
+}
+
+/* Card content */
+.icon {
+    margin-left: 8px;
+    margin-right: 7px;
+    opacity: 1;
+    display: inline-block;
+    height: 100%;
+}
+
+.icon > img {
+    width: 24px;
+    height: 100%;
+}
+
+.card-divider {
+    border: 1px solid #ABABAB;
+    opacity: 1;
+    display: inline-block;
+    margin-right: 6px;
+    position: absolute;
+    height: 100%;
+}
+
+.content {
+    display: inline-block;
+    margin-left: 7px;
+    width: 410px;
+}
+
+.content > span {
+    display: block;
+    font-family: rockwell, sans-serif;
+    font-size: 10px;
+    line-height: 11px;
+    margin-top: 3px;
+}
+
+.content > p {
+    margin-top: 5px;
+    margin-bottom: 10px;
+    font-size: 20px;
+    height: 25px;
+    letter-spacing: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    transition: height 300ms;
+    cursor: pointer;
+}
+
+.coppy-card.open .content > p {
+    height: 350px;
+    overflow: scroll;
+    transition: height 300ms;
+}
+
+.content > span:last-child {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.coppy-card {
+    height: 79px;
+    background: #FFFFFFB8 0% 0% no-repeat padding-box;
+    border: 0.5px solid #ABABAB;
+    opacity: 1;
+    transition: height 275ms;
+}
+
+.coppy-card.open {
+    height: 450px;
+    background: #FFFFFFB8 0% 0% no-repeat padding-box;
+    border: 0.5px solid #ABABAB;
+    opacity: 1;
+    transition: height 275ms;
+}
+
+.coppy-card.hidden {
+    display: none;
+}
+
+.btn.btn-settings {
+    background: url('images/settings.png') no-repeat;
+    width: 33px;
+    height: 33px;
+    margin-right: 10px;
+    margin-top: 10px;
+}
+
+.settings span.fas {
+    margin-right: 5px;
+}
+
+.record-enabled {
+    color: red;
+}
+
+.record-disabled {
+    color: grey;
+}
+
+.buttons {
+    display: none;
+    width: 100%;
+}
+
+.buttons.open {
+    display: inline-block;
+}
+
+.ui-group-buttons .btn {
+    /* float:left; */
+    border-radius:0
+}
+
+.ui-group-buttons .btn:first-child {
+    margin-left:0;
+    border-radius:.25em;
+    padding-right:15px;
+    margin-right: 20px;
+}
+
+.ui-group-buttons .btn:last-child {
+    border-radius:.25em;
+    padding-left:15px
+}

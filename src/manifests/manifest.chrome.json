@@ -1,0 +1,30 @@
+{
+    "name": "Coppy",
+    "version": "1.0",
+    "permissions": [ "<all_urls>", "tabs" ],
+    "manifest_version": 2,
+    "background": {
+      "page": "background.html" 
+    },
+    "browser_action": {
+        "default_popup": "index.html",  
+        "default_title": "Open the popup"
+    },
+    "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
+    "commands": {
+        "copy_event": {
+          "suggested_key": {
+            "default": "Ctrl+C",
+            "mac": "Command+C"
+          },
+          "description": "Copy Text"
+        }
+    },
+    "content_scripts": [
+      {
+        "matches": ["<all_urls>"],
+        "js": ["contentscripts.js"],
+        "run_at": "document_end"
+      }
+    ]
+}
