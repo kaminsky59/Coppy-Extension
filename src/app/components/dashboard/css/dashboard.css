@@ -252,3 +252,48 @@
     border-radius:.25em;
     padding-left:15px
 }
+
+.pagination-container {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    background-color: #54a6ff;
+}
+
+.pagination {
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+.pagination-link {
+    position: relative;
+    display: block;
+    padding: .5rem .75rem;
+    margin-left: -1px;
+    line-height: 1.25;
+    color: #ffffff;
+}
+
+.pagination-prev {
+    position: absolute;
+    left: 5px;
+}
+
+.pagination-next {
+    position: absolute;
+    right: 5px;
+}
+
+.pagination-active {
+    border-radius: 30%;
+    border: 2px solid #efefef;
+}
+
+.pagination a {
+    text-decoration: none;
+    outline: none;
+}
+
+.pagination-hide {
+    display: none;
+}

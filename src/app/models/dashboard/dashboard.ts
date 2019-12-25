@@ -10,4 +10,5 @@ export interface DashboardState {
         html: any;
     };
     redirectLogout: boolean;
+    hidePagination: boolean;
 }

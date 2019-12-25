@@ -1,9 +1,11 @@
 import * as React from 'react';
 import { CopyEntry } from '../../../models/dashboard/copyEntry';
+import * as $ from 'jquery';
 
 interface props {
   entry:CopyEntry, 
-  onDeleteClicked(string)
+  onDeleteClicked(string),
+  onTextClicked(),
 };
 
 export default function CoppyCard(props:props) {
@@ -14,6 +16,14 @@ export default function CoppyCard(props:props) {
 
   var onDeleteClicked = () => {
     props.onDeleteClicked(props.entry.id);
+  }
+
+  var onTextClicked = () => {
+    const id = '#' + props.entry.id;
+    $('.coppy-card').not(id).toggleClass('hidden');
+    $(id).toggleClass('open');
+    $('.buttons').toggleClass('open');
+    props.onTextClicked();
   }
 
 
@@ -29,7 +39,7 @@ export default function CoppyCard(props:props) {
               <button type="button" className="btn btn-danger" onClick={onDeleteClicked}>Delete</button>
               <button type="button" className="button btn btn-success" onClick={onCopyClicked}>Copy</button>
           </div>
-          <p className="text">{props.entry.text}</p>
+          <p className="text" onClick={onTextClicked}>{props.entry.text}</p>
           <span>Added On: {props.entry.date.toLocaleString()}</span>
           <span>Url: {props.entry.url}</span>
         </div>

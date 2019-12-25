@@ -36,8 +36,6 @@ class DashBoard extends React.Component<{}, DashboardState> {
             });
 
             this.renderEntries();
-
-            this.attachClickListeners();
         });
 
         this.state = {
@@ -50,25 +48,12 @@ class DashBoard extends React.Component<{}, DashboardState> {
                 html: null
             },
             redirectLogout: false,
+            hidePagination: false,
         }
     }
 
     componentDidMount() {
         this.renderEntries();
-    }
-
-    componentDidUpdate() {
-        this.attachClickListeners();
-    }
-
-    private attachClickListeners() {
-        $('.coppy-card .text').off('click').click(function() {
-            var coppyCardParent = $(this).parents('.coppy-card');
-
-            $('.coppy-card').not(coppyCardParent).toggleClass('hidden');
-            $(coppyCardParent).toggleClass('open');
-            $('.buttons').toggleClass('open');
-        });
     }
 
     private userLoggedOut = () => {
@@ -138,11 +123,17 @@ class DashBoard extends React.Component<{}, DashboardState> {
         });
     }
 
+    private onTextClicked = () => {
+        this.setState({
+            hidePagination: !this.state.hidePagination
+        });
+    }
+
     private generateCardHtml(entries: CopyEntry[]): any {
         const html: any[] = [];
 
         entries.forEach((entry: CopyEntry) => {
-            html.push((<CoppyCard entry={entry} onDeleteClicked={this.onDeleteClicked}/>));
+            html.push((<CoppyCard entry={entry} onDeleteClicked={this.onDeleteClicked} onTextClicked={this.onTextClicked}/>));
         })
 
         return html;
@@ -152,7 +143,11 @@ class DashBoard extends React.Component<{}, DashboardState> {
         let { redirectLogout } = this.state;
 
         if(redirectLogout) return <Redirect to={{pathname: '/signin'} }/>;
-
+        var container = 'pagination-container';
+        
+        if(this.state.hidePagination) {
+            container += ' hidden';
+        }
         return (
             <div>
                 <Banner userLoggedOut={this.userLoggedOut} syncClicked={this.userSync}/>
@@ -163,10 +158,10 @@ class DashBoard extends React.Component<{}, DashboardState> {
                 <div className="card-container">
                     {this.state.cards.html}
                 </div>
-                <nav className="pagination-container">
+                <nav className={container}>
                     <ReactPaginate
-                        previousLabel={'previous'}
-                        nextLabel={'next'}
+                        previousLabel=''
+                        nextLabel=''
                         breakLabel={'...'}
                         breakClassName={'break-me'}
                         pageCount={this.state.cards.pageCount}
@@ -175,13 +170,13 @@ class DashBoard extends React.Component<{}, DashboardState> {
                         onPageChange={this.handlePageClick}
                         containerClassName={'pagination justify-content-center'}
                         subContainerClassName={'pages pagination'}
-                        activeClassName={'active'}
+                        activeClassName={'pagination-active'}
                         pageClassName={'page-item'}
-                        pageLinkClassName={'page-link'}
+                        pageLinkClassName={'pagination-link'}
                         previousClassName={'page-item'}
                         nextClassName={'page-item'}
-                        previousLinkClassName={'page-link'}
-                        nextLinkClassName={'page-link'}
+                        previousLinkClassName={'pagination-link pagination-prev fas fa-angle-left'}
+                        nextLinkClassName={'pagination-link pagination-next fas fa-angle-right'}
                     />
                 </nav>
             </div>
