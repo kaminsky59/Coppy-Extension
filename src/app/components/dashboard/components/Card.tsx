@@ -16,16 +16,22 @@ export default function CoppyCard(props:props) {
 
   var onDeleteClicked = () => {
     props.onDeleteClicked(props.entry.id);
+    const id = '#' + props.entry.id;
+    toggleCard(id);
+    props.onTextClicked();
   }
 
   var onTextClicked = () => {
     const id = '#' + props.entry.id;
-    $('.coppy-card').not(id).toggleClass('hidden');
-    $(id).toggleClass('open');
-    $('.buttons').toggleClass('open');
+    toggleCard(id);
     props.onTextClicked();
   }
 
+  function toggleCard(id) {
+    $('.coppy-card').not(id).toggleClass('hidden');
+    $(id).toggleClass('open');
+    $('.buttons').toggleClass('open');
+  } 
 
   return (
     <div className="row coppy-card" id={props.entry.id}>

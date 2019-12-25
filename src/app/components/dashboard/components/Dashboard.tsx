@@ -95,7 +95,13 @@ class DashBoard extends React.Component<{}, DashboardState> {
     }
 
     private renderEntries() {
-        const html = this.generateCardHtml(this.state.cards.entries.slice(this.state.cards.start, this.state.cards.start + this.state.cards.offset));
+        let toStart = this.state.cards.start;
+        let html = this.generateCardHtml(this.state.cards.entries.slice(toStart, toStart + this.state.cards.offset));
+        
+        if (html.length === 0) {
+            toStart -= 4;
+            html = this.generateCardHtml(this.state.cards.entries.slice(toStart, toStart + this.state.cards.offset));
+        }
 
         this.setState({
             cards:{
@@ -104,12 +110,11 @@ class DashBoard extends React.Component<{}, DashboardState> {
                 currentPage: 1,
                 html: html,
                 offset: this.state.cards.offset,
-                start: this.state.cards.start
+                start: toStart,
             }
         });
     }
 
-    //FIXME: The last item deleted in the list on the page, removes the HTML for all items on the page
     private onDeleteClicked = (id: string) => {
         this.dashBoardService.removeEntry(id)
         .then(() => {
