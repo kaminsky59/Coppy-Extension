@@ -41,7 +41,7 @@ class LoginService {
     async logoutUser(): Promise<boolean> {
         await this.firebaseService.logout();
 
-        // this.stateService.clearUser();
+        exp.sendMessage('clearUser');
 
         return Promise.resolve(true);
     }

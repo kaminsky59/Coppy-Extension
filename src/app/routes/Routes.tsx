@@ -6,7 +6,8 @@ import Dashboard from '../components/dashboard/components/Dashboard';
 import LoginService from '../services/login/loginService';
 
 interface AuthState {
-  isAuthenticated: boolean
+  isAuthenticated: boolean,
+  loaded: boolean
 }
 
 class Routes extends React.Component<any, AuthState>{
@@ -18,7 +19,8 @@ class Routes extends React.Component<any, AuthState>{
     this.loginService = new LoginService();
 
     this.state = {
-      isAuthenticated: false
+      isAuthenticated: false,
+      loaded: false,
     };
   }
 
@@ -30,30 +32,35 @@ class Routes extends React.Component<any, AuthState>{
     this.loginService.checkForUserLoggedIn()
     .then((loggedIn) => {
       this.setState({
-        isAuthenticated: loggedIn
+        isAuthenticated: loggedIn,
+        loaded: true
       });
     })
   }
 
   loggedIn = () => {
     this.setState({
-      isAuthenticated: true
+      isAuthenticated: true,
+      loaded: true
     });
   }
 
   render() {
+    var loaderClass = 'loader-container' + (this.state.loaded ? ' hidden' : '')
     return (
       <div>
-        {/* <div className="loader-container">
+        <div className={loaderClass}>
           <div className="css-loader"></div>
-        </div>   */}
-            <Route path='/' exact render={() => (
-              !this.state.isAuthenticated ? (<Redirect to={{pathname: '/signin'} }/>) : (<Dashboard/>)
-            )}/>
-            <Route path='/signin' exact render={() => (
-              <SignIn onLoggedIn={this.loggedIn}/>
-            )}/>
-            <Route path='/register' exact component={Register}/>
+        </div>  
+        <div className={!this.state.loaded ? 'hidden' : ''}>
+          <Route path='/' exact render={() => (
+            !this.state.isAuthenticated ? (<Redirect to={{pathname: '/signin'} }/>) : (<Dashboard/>)
+          )}/>
+          <Route path='/signin' exact render={() => (
+            <SignIn onLoggedIn={this.loggedIn}/>
+          )}/>
+          <Route path='/register' exact component={Register}/>
+        </div>
       </div>
     );
   }
