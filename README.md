@@ -5,3 +5,5 @@ It uses Firebase for authentication and DB access
 There is a background script that handles all of the heavy lifting and a popup GUI. 
 
 Firebase info has been redacted, and you would need to sign up for your own account to be provided with credientals
+
+![](Coppy_Extension.gif)
